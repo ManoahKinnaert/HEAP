@@ -1,4 +1,4 @@
 package com.manoahkinnaert.experiments;
 
-public class heap1 {
+public class Heap1 {
 }
