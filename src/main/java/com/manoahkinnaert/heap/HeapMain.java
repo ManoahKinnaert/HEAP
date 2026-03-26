@@ -17,7 +17,11 @@ public class HeapMain {
     }
 
     public static void main(String[] args) throws IOException {
-        String test = readLine("test");
-        System.out.println(test);
+        while (true) {
+            int testNum = Integer.parseInt(readLine("Which test would you like to run (1-3)?"));
+            // TODO: run the desired experiment...
+            String cmd = readLine("Would you like to exit?");
+            if (cmd.equalsIgnoreCase("y")) break;
+        }
     }
 }
