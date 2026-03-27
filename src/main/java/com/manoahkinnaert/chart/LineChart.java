@@ -5,39 +5,33 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.ui.ApplicationFrame;
 
+import javax.swing.*;
 import java.awt.*;
 
-public class LineChart extends ApplicationFrame {
-    public LineChart(String winTitle, DefaultCategoryDataset compares, DefaultCategoryDataset exchanges) {
+public class LineChart extends JFrame {
+
+    public LineChart(String winTitle, DefaultCategoryDataset comparesData, DefaultCategoryDataset exchangesData) {
         super(winTitle);
-        JFreeChart comparesChart = ChartFactory.createLineChart(
-                "Compares",
-                "N",
-                "Compares",
-                compares,
-                PlotOrientation.VERTICAL,
-                true, true, false
-        );
 
-        JFreeChart exchangesChart;
-        if (exchanges != null) {
-            exchangesChart = ChartFactory.createLineChart(
-                    "Exchanges",
-                    "N",
-                    "Exchanges",
-                    exchanges,
-                    PlotOrientation.VERTICAL,
-                    true, true, false
-            );
-        }
-        ChartPanel comparesPanel = new ChartPanel(comparesChart);
-        comparesPanel.setPreferredSize(new Dimension(600, 600));
-        setContentPane(comparesPanel);
-    }
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
 
-    // TODO: To be implemented
-    public void convertToImage() {
+        // 1 row and 2 cols for side by side compares and exchanges
+        JPanel chartPanelGroup = new JPanel(new GridLayout(1, 2));
+
+        // Create compares chart
+        JFreeChart comparesChart = ChartFactory.createLineChart("Compares", "N", "Compares", comparesData, PlotOrientation.VERTICAL, true, true, false);
+        chartPanelGroup.add(new ChartPanel(comparesChart));
+
+        // Create exchanges chart
+        JFreeChart exchanges = ChartFactory.createLineChart("Exchanges", "N", "Exchanges", exchangesData, PlotOrientation.VERTICAL, true, true, false);
+        chartPanelGroup.add(new ChartPanel(exchanges));
+
+        add(chartPanelGroup);
+        pack();
+        setSize(1000, 700);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 }
