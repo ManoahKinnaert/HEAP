@@ -1,4 +1,6 @@
-package com.manoahkinnaert.utils;
+package com.manoahkinnaert.core;
+
+import com.manoahkinnaert.utils.Counter;
 
 import java.util.ArrayList;
 
