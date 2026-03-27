@@ -16,9 +16,31 @@ public class Heap extends Array {
         }
     }
 
+    // heap sink operation
+    private void sink(int k) {
+        final int n = size();
+        while (2 * k <= n) {
+            int j = 2 * k;
+            if (j < n && less(j, j + 1)) j++;
+            if (!less(k, j)) break;
+            exch(k, j);
+            k = j;
+        }
+    }
+
     public void insert(int a) {
         int n = size();
         add(++n, a);
         swim(n);
     }
+
+    public int delMax() {
+        int n = size();
+        int max = get(1);
+        exch(1, n--);
+        sink(1);
+        set(n + 1, null);
+        return max;
+    }
+
 }
