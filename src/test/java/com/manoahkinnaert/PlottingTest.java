@@ -1,8 +1,9 @@
 package com.manoahkinnaert;
 
-import com.manoahkinnaert.chart.LineChart;
+import com.manoahkinnaert.chart.Chart;
 import com.manoahkinnaert.experiments.HeapExp;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.xy.XYSeriesCollection;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class PlottingTest {
         ArrayList<Integer> test2 = new ArrayList<Integer>();
         test2.add(20); test2.add(40); test2.add(60);
 
-        DefaultCategoryDataset set1 = exp.generateDataset("TEST", new int[] {1, 2, 3}, test1, test2);
-        LineChart chart = new LineChart("HEAP-1", set1, set1);
+        XYSeriesCollection set1 = exp.generateDataset("TEST", new int[] {1, 2, 3}, test1, test2);
+        Chart chart = new Chart("HEAP-1", set1, set1);
     }
 }

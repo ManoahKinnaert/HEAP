@@ -4,14 +4,15 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class LineChart extends JFrame {
+public class Chart extends JFrame {
 
-    public LineChart(String winTitle, DefaultCategoryDataset comparesData, DefaultCategoryDataset exchangesData) {
+    public Chart(String winTitle, XYSeriesCollection comparesData, XYSeriesCollection exchangesData) {
         super(winTitle);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -21,11 +22,11 @@ public class LineChart extends JFrame {
         JPanel chartPanelGroup = new JPanel(new GridLayout(1, 2));
 
         // Create compares chart
-        JFreeChart comparesChart = ChartFactory.createLineChart("Compares", "N", "Compares", comparesData, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart comparesChart = ChartFactory.createXYLineChart("Compares", "N", "Compares", comparesData, PlotOrientation.VERTICAL, true, true, false);
         chartPanelGroup.add(new ChartPanel(comparesChart));
 
         // Create exchanges chart
-        JFreeChart exchanges = ChartFactory.createLineChart("Exchanges", "N", "Exchanges", exchangesData, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart exchanges = ChartFactory.createXYLineChart("Exchanges", "N", "Exchanges", exchangesData, PlotOrientation.VERTICAL, true, true, false);
         chartPanelGroup.add(new ChartPanel(exchanges));
 
         add(chartPanelGroup);
