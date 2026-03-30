@@ -1,6 +1,8 @@
 package com.manoahkinnaert.heap;
 
 import com.manoahkinnaert.experiments.Heap1;
+import com.manoahkinnaert.experiments.Heap2;
+import com.manoahkinnaert.experiments.Heap3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,11 +26,11 @@ public class HeapMain {
             // TODO: run the desired experiment...
             switch (testNum) {
                 case 1:
-                    System.out.println("Exp1");
+                    new Heap1().run();
                 case 2:
-                    System.out.println("Exp2");
+                    new Heap2().run();
                 case 3:
-                    System.out.println("Exp3");
+                    new Heap3().run();
                 default:
                     System.out.println("HEAP - " + testNum + " doesn't exist.");
             }

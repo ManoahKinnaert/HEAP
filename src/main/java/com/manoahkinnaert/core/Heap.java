@@ -8,7 +8,7 @@ public class Heap extends Array {
 
     // heap swim operation
     private void swim(int k) {
-        while (k > 1 && less(k, k / 2)) {
+        while (k > 1 && less(k / 2, k)) {
             exch(k, k / 2);
             k = k / 2;
         }
@@ -27,8 +27,10 @@ public class Heap extends Array {
     }
 
     public void insert(int a) {
-        int n = size();
-        add(++n, a);
+        int n = size() - 1;
+        try {
+            add(++n, a);
+        } catch (Exception e) { add(a); }
         swim(n);
     }
 

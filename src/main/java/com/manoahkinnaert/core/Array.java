@@ -5,11 +5,12 @@ import com.manoahkinnaert.utils.Counter;
 import java.util.ArrayList;
 
 public class Array extends ArrayList<Integer> {
-    Counter counter;
+    private Counter counter;
 
     public Array() {
         super();
         counter = new Counter();
+        add(1);
     }
 
     public void exch(int a, int b) {
@@ -26,5 +27,9 @@ public class Array extends ArrayList<Integer> {
 
     public void resetCounter() {
         counter.reset();
+    }
+
+    public Counter getCounter() {
+        return counter;
     }
 }
