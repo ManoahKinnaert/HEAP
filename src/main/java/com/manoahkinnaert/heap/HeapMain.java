@@ -20,22 +20,12 @@ public class HeapMain {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        while (true) {
-            int testNum = Integer.parseInt(readLine("Which test would you like to run (1-3)?"));
-            // TODO: run the desired experiment...
-            switch (testNum) {
-                case 1:
-                    new Heap1().run();
-                case 2:
-                    new Heap2().run();
-                case 3:
-                    new Heap3().run();
-                default:
-                    System.out.println("HEAP - " + testNum + " doesn't exist.");
-            }
-            String cmd = readLine("Would you like to exit (y/n)?");
-            if (cmd.equalsIgnoreCase("y")) break;
+    public static void main(String[] args) {
+        int testNum = Integer.parseInt(readLine("Which test would you like to run (1-3)?"));
+        switch (testNum) {
+            case 1: new Heap1().run();
+            case 2: new Heap2().run();
+            case 3: new Heap3().run();
         }
     }
 }
