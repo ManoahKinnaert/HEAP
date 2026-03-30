@@ -22,8 +22,16 @@ public class Heap1 extends HeapExp {
             emptyHeap.resetCounter();
         }
 
-        XYSeriesCollection comparesSet = generateDataset("Compares", new int[100], compares, compares);
-        XYSeriesCollection exchangesSet = generateDataset("Exchanges", new int[100], exchanges, exchanges);
+        // TODO: generate theoretical data
+
+        int[] sizes = new int[100];
+        for (int i = 0; i < 100; i++) sizes[i] = i;
+
+        System.out.println(compares);
+        System.out.println(exchanges);
+
+        XYSeriesCollection comparesSet = generateDataset("Compares", sizes, compares, compares);
+        XYSeriesCollection exchangesSet = generateDataset("Exchanges", sizes, exchanges, exchanges);
 
         new Chart("HEAP - 1", comparesSet, exchangesSet);
     }

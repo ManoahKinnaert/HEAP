@@ -22,11 +22,11 @@ public class Chart extends JFrame {
         JPanel chartPanelGroup = new JPanel(new GridLayout(1, 2));
 
         // Create compares chart
-        JFreeChart comparesChart = ChartFactory.createXYLineChart("Compares", "N", "Compares", comparesData, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart comparesChart = ChartFactory.createScatterPlot("Compares", "N", "Compares", comparesData, PlotOrientation.VERTICAL, true, true, false);
         chartPanelGroup.add(new ChartPanel(comparesChart));
 
         // Create exchanges chart
-        JFreeChart exchanges = ChartFactory.createXYLineChart("Exchanges", "N", "Exchanges", exchangesData, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart exchanges = ChartFactory.createScatterPlot("Exchanges", "N", "Exchanges", exchangesData, PlotOrientation.VERTICAL, true, true, false);
         chartPanelGroup.add(new ChartPanel(exchanges));
 
         add(chartPanelGroup);
