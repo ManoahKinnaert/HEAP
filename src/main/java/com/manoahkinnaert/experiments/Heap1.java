@@ -11,7 +11,9 @@ public class Heap1 extends HeapExp {
         Heap emptyHeap = new Heap();
 
         ArrayList<Integer> compares = new ArrayList<>();
+        ArrayList<Integer> comparesTheoretical = new ArrayList<>();
         ArrayList<Integer> exchanges = new ArrayList<>();
+        ArrayList<Integer> exchangesTheoretical = new ArrayList<>();
 
         int[] randomArray = constructRandomArray(100);
         for (int j : randomArray) {
@@ -22,15 +24,23 @@ public class Heap1 extends HeapExp {
             emptyHeap.resetCounter();
         }
 
-        // TODO: generate theoretical data
-
         int[] sizes = new int[100];
         for (int i = 0; i < 100; i++) sizes[i] = i;
+
+        // TODO: Generate theoretical data
+        for (int n = 0; n < 100; n++) {
+            if (n <= 1) {
+                comparesTheoretical.add(0);
+            } else {
+                comparesTheoretical.add((int) (Math.log(n) / Math.log(2)));
+            }
+
+        }
 
         System.out.println(compares);
         System.out.println(exchanges);
 
-        XYSeriesCollection comparesSet = generateDataset("Compares", sizes, compares, compares);
+        XYSeriesCollection comparesSet = generateDataset("Compares", sizes, compares, comparesTheoretical);
         XYSeriesCollection exchangesSet = generateDataset("Exchanges", sizes, exchanges, exchanges);
 
         new Chart("HEAP - 1", comparesSet, exchangesSet);
