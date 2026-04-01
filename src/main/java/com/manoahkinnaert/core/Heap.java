@@ -27,10 +27,8 @@ public class Heap extends Array {
     }
 
     public void insert(int a) {
-        int n = size() - 1;
-        try {
-            add(++n, a);
-        } catch (Exception e) { add(a); }
+        int n = size();
+        add(a);
         swim(n);
     }
 
