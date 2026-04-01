@@ -2,7 +2,6 @@ package com.manoahkinnaert;
 
 import com.manoahkinnaert.chart.Chart;
 import com.manoahkinnaert.experiments.HeapExp;
-import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import java.util.ArrayList;
