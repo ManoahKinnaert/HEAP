@@ -4,7 +4,6 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
@@ -12,7 +11,7 @@ import java.awt.*;
 
 public class Chart extends JFrame {
 
-    public Chart(String winTitle, XYSeriesCollection comparesData, XYSeriesCollection exchangesData) {
+    public Chart(String winTitle, XYSeriesCollection comparesData, XYSeriesCollection comparesTheoreticalData) {
         super(winTitle);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -26,7 +25,7 @@ public class Chart extends JFrame {
         chartPanelGroup.add(new ChartPanel(comparesChart));
 
         // Create exchanges chart
-        JFreeChart exchanges = ChartFactory.createScatterPlot("Exchanges", "N", "Exchanges", exchangesData, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart exchanges = ChartFactory.createScatterPlot("Compares Theoretical", "N", "Exchanges", comparesTheoreticalData, PlotOrientation.VERTICAL, true, true, false);
         chartPanelGroup.add(new ChartPanel(exchanges));
 
         add(chartPanelGroup);

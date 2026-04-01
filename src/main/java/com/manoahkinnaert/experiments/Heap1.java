@@ -8,41 +8,38 @@ import java.util.ArrayList;
 
 public class Heap1 extends HeapExp {
     public void run() {
-        Heap emptyHeap = new Heap();
+        Heap heap = new Heap();
 
         ArrayList<Integer> compares = new ArrayList<>();
         ArrayList<Integer> comparesTheoretical = new ArrayList<>();
-        ArrayList<Integer> exchanges = new ArrayList<>();
-        ArrayList<Integer> exchangesTheoretical = new ArrayList<>();
 
-        int[] randomArray = constructRandomArray(100);
-        for (int j : randomArray) {
-            emptyHeap.insert(j);
-            // extract compares
-            compares.add(emptyHeap.getCounter().getCompares());
-            exchanges.add(emptyHeap.getCounter().getExchanges());
-            emptyHeap.resetCounter();
+        // generate worst case input
+        int[] array = new int[100];
+        for (int i = 0; i < 100; i++) {
+            array[i] = i;
+        }
+
+        for (int j : array) {
+            heap.insert(j);
+            compares.add(heap.getCounter().getCompares());
+            heap.resetCounter();
         }
 
         int[] sizes = new int[100];
-        for (int i = 0; i < 100; i++) sizes[i] = i;
-
-        // TODO: Generate theoretical data
-        for (int n = 0; n < 100; n++) {
-            if (n <= 1) {
-                comparesTheoretical.add(0);
-            } else {
-                comparesTheoretical.add((int) (Math.log(n) / Math.log(2)));
-            }
-
+        for (int i = 0; i < 100; i++) {
+            sizes[i] = i + 1;
         }
 
-        System.out.println(compares);
-        System.out.println(exchanges);
+        for (int n = 1; n <= 100; n++) {
+            comparesTheoretical.add((int) (Math.log(n) / Math.log(2)));
+        }
 
-        XYSeriesCollection comparesSet = generateDataset("Compares", sizes, compares, comparesTheoretical);
-        XYSeriesCollection exchangesSet = generateDataset("Exchanges", sizes, exchanges, exchanges);
+        XYSeriesCollection comparesSet =
+            generateDataset("Compares", sizes, compares);
 
-        new Chart("HEAP - 1", comparesSet, exchangesSet);
+        XYSeriesCollection theoreticalSet =
+            generateDataset("Compares Theoretical", sizes, comparesTheoretical);
+
+        new Chart("HEAP - 1", comparesSet, theoreticalSet);
     }
 }

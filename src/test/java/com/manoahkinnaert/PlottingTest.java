@@ -19,10 +19,7 @@ public class PlottingTest {
         ArrayList<Integer> test1 = new ArrayList<Integer>();
         test1.add(10); test1.add(20); test1.add(30);
 
-        ArrayList<Integer> test2 = new ArrayList<Integer>();
-        test2.add(20); test2.add(40); test2.add(60);
-
-        XYSeriesCollection set1 = exp.generateDataset("TEST", new int[] {1, 2, 3}, test1, test2);
-        Chart chart = new Chart("HEAP-1", set1, set1);
+        XYSeriesCollection set1 = exp.generateDataset("TEST", new int[] {1, 2, 3}, test1);
+        new Chart("HEAP-1", set1, set1);
     }
 }
