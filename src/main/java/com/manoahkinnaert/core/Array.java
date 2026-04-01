@@ -17,13 +17,10 @@ public class Array extends ArrayList<Integer> {
         Integer obj = get(a);
         set(a, get(b));
         set(b, obj);
-        counter.increaseExchanges();
-        System.out.println("Exchanges: " + counter.getExchanges());
     }
 
     public boolean less(int a, int b) {
         counter.increaseCompares();
-        System.out.println("Compares: " + counter.getCompares());
         return get(a) < get(b);
     }
 
