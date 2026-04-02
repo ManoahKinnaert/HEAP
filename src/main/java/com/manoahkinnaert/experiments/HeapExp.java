@@ -8,15 +8,13 @@ import java.util.Random;
 
 public class HeapExp {
     // Helper function to generate a Dataset to be used in the charts
-    public XYSeriesCollection generateDataset(String name, int[] sizes, ArrayList<Integer> data) {
+    public XYSeries generateDataset(String name, int[] sizes, ArrayList<Integer> data) {
         assert sizes.length == data.size();
         XYSeries measuredSeries = new XYSeries("Measured " + name);
         for (int i = 0; i < sizes.length; i++) {
             measuredSeries.add(sizes[i], data.get(i));
         }
-        XYSeriesCollection dataset = new XYSeriesCollection();
-        dataset.addSeries(measuredSeries);
-        return dataset;
+        return measuredSeries;
     }
 
     // Helper function to generate a random fixed size array

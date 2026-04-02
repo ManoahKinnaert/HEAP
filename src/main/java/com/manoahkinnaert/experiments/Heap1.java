@@ -2,6 +2,8 @@ package com.manoahkinnaert.experiments;
 
 import com.manoahkinnaert.chart.Chart;
 import com.manoahkinnaert.core.Heap;
+
+import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import java.util.ArrayList;
@@ -31,8 +33,8 @@ public class Heap1 extends HeapExp {
         for (int n = 1; n <= 100; n++)
             comparesTheoretical.add((int) (Math.log(n) / Math.log(2)));
         
-        XYSeriesCollection comparesSet = generateDataset("Compares", sizes, compares);
-        XYSeriesCollection theoreticalSet = generateDataset("Compares Theoretical", sizes, comparesTheoretical);
+        XYSeriesCollection comparesSet = new XYSeriesCollection(generateDataset("Insert Compares", sizes, compares));
+        XYSeriesCollection theoreticalSet = new XYSeriesCollection(generateDataset("Theoretical Insert Compares", sizes, comparesTheoretical));
 
         new Chart("HEAP - 1", comparesSet, theoreticalSet);
     }
