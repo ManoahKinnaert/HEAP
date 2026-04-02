@@ -10,7 +10,6 @@ public class Array extends ArrayList<Integer> {
     public Array() {
         super();
         counter = new Counter();
-        add(1);
     }
 
     public void exch(int a, int b) {
