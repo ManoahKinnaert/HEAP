@@ -9,11 +9,8 @@ import org.jfree.data.xy.XYSeriesCollection;
 import java.util.ArrayList;
 
 public class Heap1 extends HeapExp {
-    public void run() {
-        Heap heap = new Heap();
-
-        ArrayList<Integer> compares = new ArrayList<>();
-        ArrayList<Integer> comparesTheoretical = new ArrayList<>();
+    public static void generateInsertData(Heap heap, int[] sizes, ArrayList<Integer> compares, ArrayList<Integer> comparesTheoretical) {
+        assert sizes.length == 100;
 
         // generate worst case input
         int[] array = new int[100];
@@ -26,12 +23,21 @@ public class Heap1 extends HeapExp {
             heap.resetCounter();
         }
 
-        int[] sizes = new int[100];
         for (int i = 0; i < 100; i++)
             sizes[i] = i + 1;
-        
+
         for (int n = 1; n <= 100; n++)
             comparesTheoretical.add((int) (Math.log(n) / Math.log(2)));
+    }
+
+    public void run() {
+        Heap heap = new Heap();
+
+        ArrayList<Integer> compares = new ArrayList<>();
+        ArrayList<Integer> comparesTheoretical = new ArrayList<>();
+
+        int[] sizes = new int[100];
+        generateInsertData(heap, sizes, compares, comparesTheoretical);
         
         XYSeriesCollection comparesSet = new XYSeriesCollection(generateDataset("Insert Compares", sizes, compares));
         XYSeriesCollection theoreticalSet = new XYSeriesCollection(generateDataset("Theoretical Insert Compares", sizes, comparesTheoretical));
