@@ -9,6 +9,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 import java.util.ArrayList;
 
 public class Heap1 extends HeapExp {
+
     public static void generateInsertData(Heap heap, int[] sizes, ArrayList<Integer> compares, ArrayList<Integer> comparesTheoretical) {
         assert sizes.length == 100;
 
@@ -28,6 +29,12 @@ public class Heap1 extends HeapExp {
 
         for (int n = 1; n <= 100; n++)
             comparesTheoretical.add((int) (Math.log(n) / Math.log(2)));
+    }
+
+    public static void generateDeletionData(Heap heap, int[] sizes, ArrayList<Integer> compares, ArrayList<Integer> comparesTheoretical) {
+    }
+
+    public static void generateDeleteMaxData(Heap heap, int[] sizes, ArrayList<Integer> compares, ArrayList<Integer> comparesTheoretical) {
     }
 
     public void run() {

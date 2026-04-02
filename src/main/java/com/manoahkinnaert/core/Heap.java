@@ -27,18 +27,16 @@ public class Heap extends Array {
     }
 
     public void insert(int a) {
-        int n = size();
         add(a);
-        swim(n);
+        swim(size() - 1);
     }
 
     public int delMax() {
         int n = size();
         int max = get(1);
-        exch(1, n--);
+        exch(1, n);
+        remove(n);
         sink(1);
-        set(n + 1, null);
         return max;
     }
-
 }
