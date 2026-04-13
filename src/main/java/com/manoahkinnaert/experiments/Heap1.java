@@ -70,10 +70,12 @@ public class Heap1 extends HeapExp {
         generateInsertData(heap, compares, comparesTheoretical);
         generateDeleteMaxData(heap, deletionCompares, deletionComparesTheoretical);
 
-        XYSeriesCollection comparesSet = new XYSeriesCollection(generateDataset("Insert Compares", sizes, compares));
+        XYSeriesCollection comparesSet = new XYSeriesCollection();
+        comparesSet.addSeries(generateDataset("Insert Compares", sizes, compares));
         comparesSet.addSeries(generateDataset("Deletion Compares", sizes, deletionCompares));
 
-        XYSeriesCollection theoreticalSet = new XYSeriesCollection(generateDataset("Theoretical Insert Compares", sizes, comparesTheoretical));
+        XYSeriesCollection theoreticalSet = new XYSeriesCollection();
+        theoreticalSet.addSeries(generateDataset("Theoretical Insert Compares", sizes, comparesTheoretical));
         theoreticalSet.addSeries(generateDataset("Theoretical Deletion Compares", sizes, deletionComparesTheoretical));
 
         new Chart("HEAP - 1", comparesSet, theoreticalSet);
