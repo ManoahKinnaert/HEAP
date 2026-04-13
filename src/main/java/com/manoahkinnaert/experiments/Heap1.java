@@ -28,7 +28,7 @@ public class Heap1 extends HeapExp {
             heap.resetCounter();
         }
         // generate the theoretical data
-        for (int n = 1; n <= 100; n++)
+        for (int n = 1; n <= sizes.length; n++)
             comparesTheoretical.add((int) (1 + ((Math.log(n) / Math.log(2)))));
     }
 
