@@ -25,7 +25,7 @@ public class Chart extends JFrame {
         chartPanelGroup.add(new ChartPanel(comparesChart));
 
         // Create exchanges chart
-        JFreeChart exchanges = ChartFactory.createXYLineChart("Compares Theoretical", "N", "Exchanges", comparesTheoreticalData, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart exchanges = ChartFactory.createXYLineChart("Compares Theoretical", "N", "Compares", comparesTheoreticalData, PlotOrientation.VERTICAL, true, true, false);
         chartPanelGroup.add(new ChartPanel(exchanges));
 
         add(chartPanelGroup);
