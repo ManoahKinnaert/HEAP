@@ -16,7 +16,7 @@ public class HeapExp {
             );
         }
 
-        XYSeries measuredSeries = new XYSeries("Measured " + name);
+        XYSeries measuredSeries = new XYSeries(name);
         for (int i = 0; i < sizes.length; i++) {
             measuredSeries.add(sizes[i], data.get(i));
         }
