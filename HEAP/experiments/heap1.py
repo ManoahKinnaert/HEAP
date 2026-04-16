@@ -14,39 +14,41 @@ class Heap1:
 
         self.x = []
         self.y_log = []
-        self.y_compares = []
-        self.y_exchanges = []
+        self.y_compares_empty = []
+        self.y_exchanges_empty = []
 
-    def construct_heap(self, size: int):
+    def construct_heap_empty(self, size: int):
         heap = Heap()
         values = [random.uniform(0, size) for _ in range(size)]
         for i in range(len(values)):
             heap.insert(values[i])
             self.x.append(i)
-            self.y_compares.append(heap.compares)
-            self.y_exchanges.append(heap.exchanges)
+            self.y_compares_empty.append(heap.compares)
+            self.y_exchanges_empty.append(heap.exchanges)
             heap.reset_counter()
         
     def run_exp(self):
-        self.construct_heap(10000) 
+        self.construct_heap_empty(10000) 
 
     def plot_findings(self):
         self.y_log = [1 + math.floor(math.log2(i+1)) for i in self.x]
-        self.ax1.scatter(self.x, self.y_compares)
-        self.ax1.plot(self.x, self.y_log, color="red")
+        self.ax1.scatter(self.x, self.y_compares_empty, label="Measured")
+        self.ax1.plot(self.x, self.y_log, color="red", label="Theoretical worst")
         self.ax1.set_title("Compares insert empty")
         self.ax1.set_xlabel("N (size of Heap at time of insert)")
         self.ax1.set_ylabel("Measured compares")
         self.ax1.set_yscale("log", base=2)
         self.ax1.set_xscale("log")
+        self.ax1.legend()
 
-        self.ax2.scatter(self.x, self.y_exchanges)
-        self.ax2.plot(self.x, self.y_log, color="red")
+        self.ax2.scatter(self.x, self.y_exchanges_empty, label="Measuerd")
+        #self.ax2.plot(self.x, self.y_log, color="red", label="Theoretical worst")
         self.ax2.set_title("Echanges insert empty")
         self.ax2.set_xlabel("N (size of Heap at time of insert)")
         self.ax2.set_ylabel("Measured exchanges")
         self.ax2.set_yscale("log", base=2)
         self.ax2.set_xscale("log")
+        self.ax2.legend()
 
         plt.show()
 
