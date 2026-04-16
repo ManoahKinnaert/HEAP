@@ -36,3 +36,11 @@ class Heap:
         self._arr.append(key)
         self._n += 1
         self._swim(self._n)
+
+    def del_max(self):
+        max = self._arr[1]
+        self._n -= 1
+        exch(self._arr, 1, self._n)
+        self._sink(1)
+        del self._arr[self._n + 1]
+        return max
