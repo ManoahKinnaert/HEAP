@@ -85,7 +85,6 @@ class Heap1:
         self.ax1.set_xlabel("N (size of Heap at time of insert)")
         self.ax1.set_ylabel("Measured compares")
         self.ax1.set_yscale("log", base=2)
-        self.ax1.set_xscale("log")
         self.ax1.legend()
 
         self.ax2.scatter(self.x, self.y_exchanges_empty, label="Measuerd")
@@ -94,7 +93,6 @@ class Heap1:
         self.ax2.set_xlabel("N (size of Heap at time of insert)")
         self.ax2.set_ylabel("Measured exchanges")
         self.ax2.set_yscale("log", base=2)
-        self.ax2.set_xscale("log")
         self.ax2.legend()
 
         self.ax3.set_title("Compares Heapify")
