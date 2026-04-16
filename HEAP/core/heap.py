@@ -9,7 +9,7 @@ class Heap:
 
     @property
     def size(self):
-        return self._size
+        return len(self._arr) - 1
 
     @property
     def compares(self):
