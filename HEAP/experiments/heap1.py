@@ -50,7 +50,7 @@ class Heap1:
 
         self.ax2.scatter(self.x, self.y_exchanges_empty, label="Measuerd", color="blue")
         #self.ax2.plot(self.x, self.y_log, color="red", label="Theoretical worst")
-        self.ax2.set_title("Echanges insert empty")
+        self.ax2.set_title("Exchanges insert empty")
         self.ax2.set_xlabel("N (size of Heap at time of insert)")
         self.ax2.set_ylabel("Measured exchanges")
         self.ax2.set_yscale("log", base=2)
