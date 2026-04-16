@@ -1,26 +1,3 @@
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-.settings
-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
-.mvn/wrapper/maven-wrapper.jar
-
-# Eclipse m2e generated files
-# Eclipse Core
-.project
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
-# Intellij 
-*.iml
-.idea
-
-# Latex
 # Created by https://www.toptal.com/developers/gitignore/api/latex,linux,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=latex,linux,macos
 
@@ -383,3 +360,5 @@ Temporary Items
 *.icloud
 
 # End of https://www.toptal.com/developers/gitignore/api/latex,linux,macos
+venv
+*__pycache__
