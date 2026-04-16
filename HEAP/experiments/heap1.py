@@ -5,12 +5,12 @@ executed in log time (with n the amount of elements present in the heap at the t
 """
 from core.heap import Heap 
 import matplotlib.pyplot as plt 
-import numpy as np
+import random
 import math
 
 class Heap1:
     def __init__(self):
-        self.fig, (self.ax1, self.ax2) = plt.subplots(1, 2)
+        self.fig, ((self.ax1, self.ax2), (self.ax3, self.ax4)) = plt.subplots(2, 2)
 
         self.x = []
         self.y_log = []
@@ -19,7 +19,7 @@ class Heap1:
 
     def construct_heap(self, size: int):
         heap = Heap()
-        values = list(np.random.uniform(low=0, high=size, size=size))
+        values = [random.uniform(0, size) for _ in range(size)]
         for i in range(len(values)):
             heap.insert(values[i])
             self.x.append(i)
@@ -34,10 +34,19 @@ class Heap1:
         self.y_log = [1 + math.floor(math.log2(i+1)) for i in self.x]
         self.ax1.scatter(self.x, self.y_compares)
         self.ax1.plot(self.x, self.y_log, color="red")
-        self.ax1.set_title("Compares")
+        self.ax1.set_title("Compares insert empty")
+        self.ax1.set_xlabel("N (size of Heap at time of insert)")
+        self.ax1.set_ylabel("Measured compares")
+        self.ax1.set_yscale("log", base=2)
+        self.ax1.set_xscale("log")
 
         self.ax2.scatter(self.x, self.y_exchanges)
-        self.ax2.set_title("Echanges")
+        self.ax2.plot(self.x, self.y_log, color="red")
+        self.ax2.set_title("Echanges insert empty")
+        self.ax2.set_xlabel("N (size of Heap at time of insert)")
+        self.ax2.set_ylabel("Measured exchanges")
+        self.ax2.set_yscale("log", base=2)
+        self.ax2.set_xscale("log")
 
         plt.show()
 
