@@ -6,7 +6,7 @@ if __name__ == "__main__":
         if exp_num == 1:
             Heap1().run() 
         elif exp_num == 2:
-            pass
+            Heap2().run()
         else:
             print("Error: invalid experiment number")
 

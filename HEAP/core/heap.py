@@ -65,3 +65,13 @@ class Heap:
         for k in range(self._n // 2, 0, -1):
             self._sink(k)
 
+
+    def sort(self, values: list):
+        self.heapify(values)
+        while self._n > 1:
+            self._n -= 1
+            exch(self._arr, 1, self._n, self._counter)
+            self._sink(1)
+
+        self._n = len(values)
+        return self._arr[1:]
