@@ -23,7 +23,6 @@ class Heap:
     def reset_counter(self):
         self._counter.reset()
 
-   
     def _swim(self, k: int):
         while (k > 1 and less(self._arr, k // 2, k, self._counter)):
             exch(self._arr, k, k // 2, self._counter)
