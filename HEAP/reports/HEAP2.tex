@@ -20,43 +20,36 @@
 \end{titlepage}
 \pagebreak
 \section{Korte inleiding}
-In dit (korte) verslag bespreken we een experiment rond binaire max heaps. We bekijken de kost in exchanges en compares voor de elementaire sink en swim operaties 
-bij het toevoegen van elementen in heaps, alsook bij het verwijderen van het grootste element uit een heap.
+In dit (korte) verslag bespreken we kort een experiment omtrent heapsort.
+Namelijk hoe het aantal compares evolueert naarmate de invoergrootte n groter wordt.
 Alle code die gebruikt is voor dit experiment is hier terug te vinden: \\\ 
 \url{https://github.com/ManoahKinnaert/HEAP}.
 
-\section{Verloop van de experimenten}
-In dit experiment nemen we n voor het aantal elementen die zich in de heap bevinden.  
-Voor de inserts in de heap doen we het experiment op twee manieren.
-Voor het eerste doen we het door te vertrekken van een lege array en telkens een element toe te voegen en deze dan te laten zakken in de heap.
-Deze elementen die toegevoegd worden zijn random en worden gegenereerd met een uniforme verdelings functie uit de standard library van Python.
-De heap wordt dus telkens groter en groter. We verwachten hier hoogstens \begin{math} 1 + \lfloor \log_2 n \rfloor \end{math} compares.
-En voor het aantal exchanges verwachten we hoogstens \begin{math} \lfloor \log_2 n \rfloor \end{math} exchanges.
-
-Voor het tweede vertrekken we van een array van uniform verdeelde random getallen en heapifyen we de array. 
-Door te beginnen met het laatste element dat kinderen heeft en deze elementen te laten 'zinken'. Dit doen we van dit laatste element 
-tot en met het 'wortelelement'. Voor het aantal compares in functie van n verwachten we hier hoogstens \begin{math} 2n\end{math} compares.
-En voor het aantal exchanges verwachten we hoogstens \begin{math} n \end{math} exchanges.
-
-Voor het verwijderen van de grootste waarde in de heap is het experiment eenvoudiger.
-We bouwen eerst een heap op van grootte n en verwijderen dan systematisch het grootste element oftewel het 'wortelelement'.
-Iedere keer dat we het 'wortelelement' verwijderen tellen we het aantal compares en exchanges.
-Voor de compares verwachten we hier hoogstens \begin{math} 2\lfloor \log_2 n \rfloor \end{math} compares. En voor het aantal exchanges 
-verwachten we hoogstens \begin{math} 1 + \lfloor \log_2 n \rfloor \end{math} exchanges.
+\section{Verloop van het experiment}
+We bouwen eerst een heap op door een bestaande random array te heapifyen. En dit voor meerdere array groottes van 10 tot en met 10000.
+Daarna sorteren we die door het wortelelement te verwisselen met het laatste element in de heap.
+Dan laten we nog het wortelelement zinken totdat we weer een geldige heap hebben.
+Het maximaal aantal compares zou \begin{math} 2n\log_2 n \end{math} moeten bedragen. 
+Het is een uitdrukking van de vorm \begin{math} cn\log_2 n \end{math}, in ons experiment proberen we ook 
+deze constante c te benaderen / uit te rekenen. Dit doen we door ons bekomen resultaat van het aantal compares te delen door 
+\begin{math} n\log_2 n \end{math} waardoor we een schatting proberen te verkrijgen voor c.
 
 \section{Bevindingen plotten}
-Voor het plotten van het aantal compares en exchanges bij het toevoegen van elementen is er voor de 'eerste manier' gebruik gemaakt van 
-een logaritmische y-as. We verachtten immers logaritmisch gedrag dus waarom niet\dots
-Voor alle andere grafieken is er gebruik gemaakt van een normale lineaire schaal voor de assen.
+Voor het plotten van het aantal compares en de schatting van c is er gebruik gemaakt van de python matplotlib module.
+De assen zijn gewoon lineair geschaald een groot voordeel uit het logaritmisch schalen van de assen werd niet echt verwacht.
 
 \section{Bevindingen}
-Voor de experimenten rond het toevoegen van elementen aan een heap zien we dat het aantal compares en exchanges duidelijk onder de theoretische bovengrenzen blijft. De gemeten waarden benaderen de theoretische curves wel, maar overschrijden deze niet.
-Dit resultaat is verwacht, aangezien de theoretische curves een worst-case analyse weergeven. In praktijk zullen inserts vaak minder swaps en vergelijkingen vereisen, afhankelijk van de ingevoegde waarden en de reeds opgebouwde heapstructuur.
-De resultaten bevestigen dus dat de implementatie van de heap-operaties correct gedrag vertoont en binnen de theoretische complexiteitsgrenzen blijft.
+Op de gegenereerde grafiek voor het aantal compares is duidelijk te zien dat voor een random array het aantal compares onder de theoretische bovengrens blijft.
+Hieruit kunnen we concluderen dat we in de praktijk zelden worst case gedrag zullen tegenkomen.
+Voor het schatten van de constante c zien we een logaritmisch verloop in de convergentie naar c.
+Deze gaat voor onze maximale arraygrootte van 10000 richting de 1.8. Dit suggereert dat deze 
+curve zal convergeren naar de constante waarde 2 als n oneindig groot wordt.
 
-In de resultaten zit ook goed nieuws aangezien wordt waargenomen dat het worst-case aantal compares en exchanges niet vaak wordt gehaald bij het toevoegen van random elementen.
-Ook het verwijderen van de grootste elementen uit de heapstructuren die met random elementen zijn opgebouwd zien we vergelijkbaar gedrag.
-De theoretische bovengrenzen worden in de praktijk dus zelden benaderd (zie grafieken op volgende bladzijde).
-
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Figure_1.png}
+    \caption{Heapsort en schatting van constante c (zie git repo indien niet duidelijk genoeg)}
+    \label{fig:heap_sort}
+\end{figure}
 
 \end{document}
