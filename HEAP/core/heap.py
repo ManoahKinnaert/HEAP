@@ -10,7 +10,7 @@ class Heap:
 
     @property
     def size(self):
-        return len(self._arr) - 1
+        return self._n
 
     @property
     def compares(self):
@@ -19,6 +19,10 @@ class Heap:
     @property
     def exchanges(self):
         return self._counter.exchanges
+
+    @property
+    def content(self):
+        return self._arr[1:]
 
     def reset_counter(self):
         self._counter.reset()
@@ -42,9 +46,22 @@ class Heap:
         self._swim(self._n)
 
     def del_max(self):
-        max = self._arr[1]
-        self._n -= 1
+        assert self._n > 0
+        
+        max_val = self._arr[1]
         exch(self._arr, 1, self._n, self._counter)
-        self._sink(1)
-        del self._arr[self._n + 1]
-        return max
+        self._n -= 1
+        self._arr.pop()
+        
+        if self._n > 0:
+            self._sink(1)
+
+        return max_val
+    
+    def heapify(self, values: list):
+        self._arr = [None] + values
+        # sink the elements in the arr from the last node with children
+        self._n = len(values)
+        for k in range(self._n // 2, 0, -1):
+            self._sink(k)
+

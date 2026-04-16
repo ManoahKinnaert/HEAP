@@ -10,7 +10,9 @@ import math
 
 class Heap1:
     def __init__(self):
-        self.fig, ((self.ax1, self.ax2), (self.ax3, self.ax4)) = plt.subplots(2, 2)
+        plt.style.use('ggplot')
+
+        self.fig1, ((self.ax1, self.ax2), (self.ax3, self.ax4)) = plt.subplots(2, 2)
 
         self.x = []
         self.y_log = []
@@ -37,7 +39,7 @@ class Heap1:
 
     def plot_findings(self):
         self.y_log = [1 + math.floor(math.log2(i+1)) for i in list(set(self.x))]
-        self.ax1.scatter(self.x, self.y_compares_empty, label="Measured")
+        self.ax1.scatter(self.x, self.y_compares_empty, label="Measured", color="blue")
         self.ax1.plot(list(set(self.x)), self.y_log, color="red", label="Theoretical worst")
         self.ax1.set_title("Compares insert empty")
         self.ax1.set_xlabel("N (size of Heap at time of insert)")
@@ -46,7 +48,7 @@ class Heap1:
         self.ax1.set_xscale("log")
         self.ax1.legend()
 
-        self.ax2.scatter(self.x, self.y_exchanges_empty, label="Measuerd")
+        self.ax2.scatter(self.x, self.y_exchanges_empty, label="Measuerd", color="blue")
         #self.ax2.plot(self.x, self.y_log, color="red", label="Theoretical worst")
         self.ax2.set_title("Echanges insert empty")
         self.ax2.set_xlabel("N (size of Heap at time of insert)")
