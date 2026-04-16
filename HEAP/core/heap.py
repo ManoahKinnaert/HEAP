@@ -1,3 +1,5 @@
+from utils import less, exch
+
 class Heap:
     def __init__(self, size: int):
         self._size = size   # theoretical size
@@ -24,5 +26,12 @@ class Heap:
             k = k // 2
 
     def _sink(self, k: int):
-        pass 
+        n = len(self._arr)
+        while 2 * k <= n:
+            j = 2 * k 
+            if j < n and less(self._arr, j, j + 1): j += 1
+            if not less(self._arr, k ,j): break
+            exch(self._arr, k, j)
+            k = j
+    
 
