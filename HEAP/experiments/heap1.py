@@ -27,13 +27,18 @@ class Heap1:
             self.y_exchanges_empty.append(heap.exchanges)
             heap.reset_counter()
         
+    def construct_heapify(self, size: int):
+        heap = Heap()
+        values = [random.uniform(0, size) for _ in range(size)] 
+
     def run_exp(self):
-        self.construct_heap_empty(10000) 
+        for _ in range(20):
+            self.construct_heap_empty(10000) 
 
     def plot_findings(self):
-        self.y_log = [1 + math.floor(math.log2(i+1)) for i in self.x]
+        self.y_log = [1 + math.floor(math.log2(i+1)) for i in list(set(self.x))]
         self.ax1.scatter(self.x, self.y_compares_empty, label="Measured")
-        self.ax1.plot(self.x, self.y_log, color="red", label="Theoretical worst")
+        self.ax1.plot(list(set(self.x)), self.y_log, color="red", label="Theoretical worst")
         self.ax1.set_title("Compares insert empty")
         self.ax1.set_xlabel("N (size of Heap at time of insert)")
         self.ax1.set_ylabel("Measured compares")
