@@ -31,8 +31,8 @@ class Heap1:
         heap = Heap()
         values = [random.uniform(0, size) for _ in range(size)] 
 
-    def run_exp(self):
-        for _ in range(20):
+    def run_exp(self, trials=20):
+        for _ in range(trials):
             self.construct_heap_empty(10000) 
 
     def plot_findings(self):
