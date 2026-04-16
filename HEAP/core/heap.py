@@ -1,12 +1,11 @@
 from utils import less, exch
 
 class Heap:
-    def __init__(self, size: int):
-        self._size = size   # theoretical size
+    def __init__(self):
         self._counter = None
     
         self._arr = [self._size]
-
+        self._n = 0
 
     @property
     def size(self):
@@ -26,12 +25,14 @@ class Heap:
             k = k // 2
 
     def _sink(self, k: int):
-        n = len(self._arr)
-        while 2 * k <= n:
+        while 2 * k <= self._n:
             j = 2 * k 
-            if j < n and less(self._arr, j, j + 1): j += 1
+            if j < self._n and less(self._arr, j, j + 1): j += 1
             if not less(self._arr, k ,j): break
             exch(self._arr, k, j)
             k = j
     
-
+    def insert(self, key):
+        self._arr.append(key)
+        self._n += 1
+        self._swim(self._n)
