@@ -1,8 +1,9 @@
 from utils import less, exch
+from utils.counter import Counter 
 
 class Heap:
     def __init__(self):
-        self._counter = None
+        self._counter = Counter()
     
         self._arr = [self._size]
         self._n = 0
